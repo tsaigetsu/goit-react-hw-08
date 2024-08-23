@@ -1,0 +1,18 @@
+.label {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 15px;
+    margin-left: 15px;
+    margin-bottom: 16px;
+    border: 1px white solid;
+    border-radius: 8px;
+    & span {
+        font-weight: 500;
+    }
+}
+.input {
+    border-radius: 4px;
+    background-color: gray;
+    height: 20px;
+}
