@@ -1,0 +1,24 @@
+table, th, td {
+  border: 1px solid black;
+}
+table {
+    border-collapse: collapse;
+    margin: 10px auto;
+}
+thead {
+    background-color: rgb(41, 41, 41);
+    color: white;
+    font-size: 12px;
+}
+th, tr {
+    width: 150px;
+    height: 30px;
+    text-align: center;
+}
+.firstCol {
+    text-align: left;
+    padding-left: 40px;
+}
+.tr:nth-child(2n) {
+    background-color: rgb(212, 212, 212);
+}

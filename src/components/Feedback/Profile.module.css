@@ -1,0 +1,54 @@
+.userProfile {
+  width: 250px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f7f7f7;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding-top: 12px;
+  text-align: center;
+    margin: 10px auto;
+}
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.userImage {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(48, 48, 48);
+    border-radius: 200px;
+}
+.userName {
+    color: black;
+    font-weight: 700;
+}
+.userDesc {
+    color: gray;
+}
+.list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid gray;
+    background-color: lightgray;
+}
+.listItem:nth-last-child(1) {
+    border-right: none;
+}
+.listItem {
+    width: 100%;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid gray;
+}
+.solidSpan {
+    font-weight: 700;
+}
