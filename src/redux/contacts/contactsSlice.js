@@ -3,10 +3,11 @@ import {
   addContactsThunk,
   deleteContactThunk,
   fetchContactsThunk,
-} from "../contactsOps";
+  logOutThunk,
+} from "../contactsOps";  // Додано logOutThunk
 
 const initialState = {
-  contacts: [], loading: false, error: null ,
+  contacts: [], loading: false, error: null,
 };
 
 const slice = createSlice({
@@ -24,6 +25,9 @@ const slice = createSlice({
         state.contacts = state.contacts.filter(
           (contact) => contact.id !== action.payload
         );
+      })
+      .addCase(logOutThunk.fulfilled, (state) => {  // Додано logOut.fulfilled
+        state.contacts = [];
       })
       .addMatcher(
         isAnyOf(
@@ -60,4 +64,4 @@ const slice = createSlice({
   },
 });
 
-export const contactsReduser = slice.reducer;
+export const contactsReducer = slice.reducer;
