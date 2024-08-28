@@ -1,0 +1,27 @@
+.ul {
+    display: flex;
+    gap: 20px;
+}
+.li {
+    list-style: none;
+    height: 40px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    &:hover {
+        background-color: #E3DCD2;
+    }
+    
+}
+.link {
+    height: 40px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #CC8B65;
+    text-decoration: none;
+}

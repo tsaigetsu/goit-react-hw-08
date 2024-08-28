@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
 import s from "./SearchBox.module.css";
-import { changeFilter } from "../../redux/filter/filtersSlice";
+import { changeFilter } from "../../redux/filter/slice";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
   return (
     <label className={s.label}>
-      <span>Find contact by name</span>
+      <span className={s.span}>Find contact by name</span>
       <input
         className={s.input}
         type="text"

@@ -8,8 +8,8 @@ const Contact = ({ id, name, number }) => {
   return (
     <li className={s.li}>
       <div>
-        <p>{name}</p>
-        <a href="">{number}</a>
+        <p className={s.contactName}>{name}</p>
+        <a href="" className={s.contactNumber}>{number}</a>
       </div>
       <button
         className={s.button}

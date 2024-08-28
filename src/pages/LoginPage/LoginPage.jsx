@@ -1,5 +1,4 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-// import * as Yup from "yup";
+import { Field, Form, Formik } from "formik";
 import s from "./LoginPage.module.css";
 import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,8 +9,8 @@ const LoginPage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const initialValues = { email: "", password: "" };
-  
-  const dispatch = useDispatch()
+
+  const dispatch = useDispatch();
   const onSubmit = (values, options) => {
     dispatch(loginThunk(values));
     options.resetForm();
@@ -21,30 +20,29 @@ const LoginPage = () => {
     return <Navigate to="/" />;
   }
   return (
-    <div>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-      >
-        <Form>
-          <label>
-            <span>Email</span>
-            <Field name="email"></Field>
-            <ErrorMessage
-              name="email"
-              component="span"
-              className={s.error}></ErrorMessage>
-          </label>
-          <label>
-            <span>Password</span>
-            <Field name="password" type="password"></Field>
-            <ErrorMessage
-              name="password"
-              component="span"
-              className={s.error}></ErrorMessage>
-          </label>
-          <button type="submit">Sign In</button>
-          <p>Don't have an account yet? <Link to='/register'>Sing Up!</Link> </p>
+    <div className={s.loginPage}>
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        <Form className={s.form}>
+          <div className={s.formFields}>
+            <label className={s.label}>
+              <span className={s.inputName}>Email</span>
+              <Field name="email" className={s.input}></Field>
+            </label>
+            <label className={s.label}>
+              <span className={s.inputName}>Password</span>
+              <Field
+                name="password"
+                type="password"
+                className={s.input}
+              ></Field>
+            </label>
+          </div>
+          <div className={s.buttonAndLink}>
+            <button type="submit" className={s.btn}>Sign In</button>
+            <p className={s.p}>
+              Don't have an account yet? <Link to="/register" className={s.link}>Sing Up!</Link>{" "}
+            </p>
+          </div>
         </Form>
       </Formik>
     </div>

@@ -1,13 +1,26 @@
 .li {
-    width: 300px;
-    list-style: none;
-    background-color: gray;
     display: flex;
     justify-content: space-between;
-    padding: 15px;
-    height: 40px;
-    border-radius: 8px;
+    background-color: #CC8B65;
+    padding: 20px;
+    border-radius: 6px;
+    width: 150px;
 }
-.button:hover {
-    background-color: gray;
+.contactName {
+    color: #342628;
+}
+.contactNumber {
+    color: #E3DCD2;
+}
+.button {
+    width: 60px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    background-color: #342628;
+    color: #E3DCD2;
+    &:hover {
+        background-color: #E3DCD2;
+        color: #342628;
+    }
 }

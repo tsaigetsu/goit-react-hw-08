@@ -23,36 +23,40 @@ const RegisterPage = () => {
     options.resetForm();
   };
   return (
-    <div>
+    <div className={s.registerPage}>
       <Formik
         validationSchema={registerSchema}
         initialValues={initialValues}
         onSubmit={onSubmit}
       >
-        <Form>
-          <label>
-            <span>Name</span>
-            <Field name="name"></Field>
-            <ErrorMessage name="name" component="span" className={s.error} />
-          </label>
-          <label>
-            <span>Email</span>
-            <Field name="email"></Field>
-            <ErrorMessage name="email" component="span" className={s.error} />
-          </label>
-          <label>
-            <span>Password</span>
-            <Field name="password" type="password"></Field>
-            <ErrorMessage
-              name="password"
-              component="span"
-              className={s.error}
-            />
-          </label>
-          <button type="submit">Register</button>
-          <p>
-            You already have an account? <Link to="/login">Sign in</Link>{" "}
-          </p>
+        <Form className={s.form}>
+          <div className={s.formFields}>
+            <label className={s.label}>
+              <span className={s.inputName}>Name</span>
+              <Field name="name" className={s.input}></Field>
+              <ErrorMessage name="name" component="span" className={s.error} />
+            </label>
+            <label className={s.label}>
+              <span className={s.inputName}>Email</span>
+              <Field name="email" className={s.input}></Field>
+              <ErrorMessage name="email" component="span" className={s.error} />
+            </label>
+            <label className={s.label}>
+              <span className={s.inputName}>Password</span>
+              <Field name="password" type="password" className={s.input}></Field>
+              <ErrorMessage
+                name="password"
+                component="span"
+                className={s.error}
+              />
+            </label>
+          </div>
+          <div className={s.buttonAndLink}>
+            <button type="submit" className={s.btn}>Register</button>
+            <p className={s.p}>
+              You already have an account? <Link to="/login" className={s.link}>Sign in</Link>{" "}
+            </p>
+          </div>
         </Form>
       </Formik>
     </div>

@@ -1,0 +1,35 @@
+.main {
+    height: 100vh;
+    background-color: #342628;
+    background:  linear-gradient(to bottom, 
+    rgba(52, 38, 40, 0.4) 10%,
+    rgb(52, 38, 40) 100%), url('../../assets/images/contactbook-banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.hero {
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mainTitle {
+    padding: 100px 0;
+    text-transform: uppercase;
+    font-size: 60px;
+    color: #E3DCD2;
+    text-align: center;
+}
+.description {
+    padding: 100px 0;
+}
+.p {
+    font-size: 24px;
+    color: #E3DCD2;
+}
