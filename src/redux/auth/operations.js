@@ -15,18 +15,18 @@ export const registerThunk = createAsyncThunk(
 );
 
 export const loginThunk = createAsyncThunk(
-  "login",
+  "auth/login",
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await goitApi.post("users/login", credentials);
+      const { data } = await goitApi.post("/users/login", credentials);
       setToken(data.token);
-      localStorage.setItem('token', data.token); 
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message || error.message);
     }
   }
 );
+
 export const logoutThunk = createAsyncThunk(
   "auth/logout",
   async (_, thunkAPI) => {
