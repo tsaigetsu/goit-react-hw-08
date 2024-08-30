@@ -3,6 +3,8 @@ import Description from "./Description/Description";
 import Feedback from "./Feedback/Feedback";
 import Options from "./Options/Options";
 import Notification from "./Notification/Notification";
+import { useDispatch } from 'react-redux';
+import { refreshUserThunk } from '../redux/auth/operations';
 
 const App = () => {
   const [feedback, setFeedback] = useState(() => {
@@ -13,6 +15,11 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('feedback', JSON.stringify(feedback));
   }, [feedback]);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUserThunk());
+  }, [dispatch]);
 
   const handleFeedbackClick = (type) => {
     setFeedback(prevFeedback => ({

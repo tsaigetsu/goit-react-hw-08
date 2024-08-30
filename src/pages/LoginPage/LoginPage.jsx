@@ -7,18 +7,19 @@ import { selectIsLoggedIn } from "../../redux/auth/selectors";
 
 const LoginPage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch();
 
   const initialValues = { email: "", password: "" };
 
-  const dispatch = useDispatch();
   const onSubmit = (values, options) => {
     dispatch(loginThunk(values));
     options.resetForm();
   };
 
   if (isLoggedIn) {
-    return <Navigate to="/" />;
+    return <Navigate to="/contacts" />;
   }
+
   return (
     <div className={s.loginPage}>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -26,21 +27,17 @@ const LoginPage = () => {
           <div className={s.formFields}>
             <label className={s.label}>
               <span className={s.inputName}>Email</span>
-              <Field name="email" className={s.input}></Field>
+              <Field name="email" className={s.input} />
             </label>
             <label className={s.label}>
               <span className={s.inputName}>Password</span>
-              <Field
-                name="password"
-                type="password"
-                className={s.input}
-              ></Field>
+              <Field name="password" type="password" className={s.input} />
             </label>
           </div>
           <div className={s.buttonAndLink}>
             <button type="submit" className={s.btn}>Sign In</button>
             <p className={s.p}>
-              Don't have an account yet? <Link to="/register" className={s.link}>Sing Up!</Link>{" "}
+              Don't have an account yet? <Link to="/register" className={s.link}>Sign Up!</Link>
             </p>
           </div>
         </Form>
