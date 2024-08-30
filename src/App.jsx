@@ -33,26 +33,22 @@ const App = () => {
           <Route
             path="contacts"
             element={
-              <PrivateRoute>
-                <ContactsPage />
-              </PrivateRoute>
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />}/>
             }
           />
         </Route>
         <Route
           path="/login"
           element={
-            <PublicRoute>
-              <LoginPage />
-            </PublicRoute>
+            <PublicRoute redirectTo="/contacts" component={<LoginPage />}/>
           }
         />
         <Route
           path="/register"
           element={
-            <PublicRoute>
-              <RegisterPage />
-            </PublicRoute>
+            <PublicRoute 
+            redirectTo="/contacts"
+            component={<RegisterPage />}/>
           }
         />
         <Route path="*" element={<NotFoundPage />} />

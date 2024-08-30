@@ -5,7 +5,6 @@ import { goitApi } from "../../goitApi";
 export const fetchContactsThunk = createAsyncThunk('fetchContacts', async (_, thunkApi) => {
     try {
         const { data } = await goitApi.get('contacts')
-        console.log(data);
         return data;        
     } catch (error) {
         return thunkApi.rejectWithValue(error.message)

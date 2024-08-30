@@ -1,56 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { clearToken, goitApi, setToken } from "../../goitApi";
 
-
 export const registerThunk = createAsyncThunk(
-  "auth/register",
+  "register",
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await goitApi.post("/users/signup", credentials);
-      setToken(data.token);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data?.message || error.message);
-    }
-  }
-);
-
-export const loginThunk = createAsyncThunk(
-  "auth/login",
-  async (credentials, thunkAPI) => {
-    try {
-      const { data } = await goitApi.post("/users/login", credentials);
-      setToken(data.token); 
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data?.message || error.message);
-    }
-  }
-);
-
-export const logoutThunk = createAsyncThunk(
-  "auth/logout",
-  async (_, thunkAPI) => {
-    try {
-      await goitApi.post("users/logout");
-      clearToken();
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data?.message || error.message);
-    }
-  }
-);
-
-export const refreshUserThunk = createAsyncThunk(
-  "auth/refreshUser",
-  async (_, thunkAPI) => {
-    const savedToken = localStorage.getItem('token');
-    if (!savedToken) {
-      return thunkAPI.rejectWithValue("No token found");
-    }
-
-    setToken(savedToken);
-    try {
-      const { data } = await goitApi.get("users/current");
+      const { data } = await goitApi.post("users/signup", credentials);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -58,20 +13,39 @@ export const refreshUserThunk = createAsyncThunk(
   }
 );
 
-export const fetchCurrentUser = createAsyncThunk(
-  "auth/fetchCurrentUser",
-  async (_, thunkAPI) => {
+export const loginThunk = createAsyncThunk(
+  "login",
+  async (credentials, thunkAPI) => {
     try {
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.token;
+      const { data } = await goitApi.post("users/login", credentials);
+      setToken(data.token);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
-      if (!persistedToken) {
-        return thunkAPI.rejectWithValue("No token found");
-      }
+export const logoutThunk = createAsyncThunk("logout", async (_, thunkAPI) => {
+  try {
+    await goitApi.post("users/logout");
+    clearToken();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
-      setToken(persistedToken);
-      const response = await goitApi.get("/users/current");
-      return response.data;
+export const refreshUserThunk = createAsyncThunk(
+  "refreshUser",
+  async (_, thunkAPI) => {
+    const savedToken = thunkAPI.getState().auth.token;
+    if (savedToken === null) {
+      return thunkAPI.rejectWithValue("Token is not exist!");
+    }
+    try {
+      setToken(savedToken);
+      const { data } = await goitApi.get("users/current");
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
